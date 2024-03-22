@@ -1,7 +1,7 @@
 This work is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). 
 
 # Transcriptional and neurochemical signatures of cerebral blood flow alterations in schizophrenia and the clinical high-risk state for psychosis
-This repository contains data and code used the project 'Transcriptional and neurochemical signatures of cerebral blood flow alterations in schizophrenia and the clinical high-risk state for psychosis', currently published as a preprint in [BioRIV](https://www.biorxiv.org/content/10.1101/2024.03.13.583894v1). The aim of this project is to measure the correspondence between regional cerebral blood flow alterations in the psychosis spectrum and molecular and neurochemical signatures as measured through the [Allen Human Brain Atlas](https://portal.brain-map.org) and [19 PET tracers](https://github.com/netneurolab/hansen_receptors/tree/main/data).
+This repository contains data and code used the project 'Transcriptional and neurochemical signatures of cerebral blood flow alterations in schizophrenia and the clinical high-risk state for psychosis', currently published as a preprint in [BioRIV](https://www.biorxiv.org/content/10.1101/2024.03.13.583894v1). The aim of this project is to measure the correspondence between regional cerebral blood flow alterations in the psychosis spectrum and molecular and neurochemical signatures as measured through the [Allen Human Brain Atlas](https://portal.brain-map.org) and [19 PET tracers](https://github.com/netneurolab/hansen_receptors/tree/main/).
 
 Code is written in Python.
 
