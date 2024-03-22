@@ -17,11 +17,11 @@ The [code](code/) folder contains the code used to run the analyses. If you run 
 - [parcellate_maps_and_generate_nulls](code/parcellate_maps_and_generate_nulls.npy) will parcellate (e.g. ASL, PET) .nii maps into a given atlas space (e.g. 2mm Schaefer+Xiao 122 ROI atlas). 
 This code uses [neuromaps](https://netneurolab.github.io/neuromaps/usage.html) toolbox, PET maps from [hansenreceptors](https://github.com/netneurolab/hansen_receptors/tree/main/data), as well as group-level schizophrenia and clinical-high risk for psychosis rCBF t-stat maps we have made available for this project. After parcellating maps, nulls are generated using the [burt2020](https://brainsmash.readthedocs.io/en/latest/) method, implemented through [neuromaps](https://netneurolab.github.io/neuromaps/usage.html).
 
-- [analysis_correlations](code/analysis_correlations.npy) will run correlational analysis and generate a heatmap using the comparemaps function, implemented through [neuromaps](https://netneurolab.github.io/neuromaps/usage.html). 
+- [analysis_correlations](code/analysis_correlations.py) will run correlational analysis and generate a heatmap using the comparemaps function, implemented through [neuromaps](https://netneurolab.github.io/neuromaps/usage.html). 
 
-- [analysis_dominance](code/analysis_dominance.npy) will run a dominance analysis adapted from [hansenreceptors](https://github.com/netneurolab/hansen_receptors/tree/main/data) and implemented through [netneurotools](https://netneurotools.readthedocs.io/en/latest/).
+- [analysis_dominance](code/analysis_dominance.py) will run a dominance analysis adapted from [hansenreceptors](https://github.com/netneurolab/hansen_receptors/tree/main/data) and implemented through [netneurotools](https://netneurotools.readthedocs.io/en/latest/).
 
-- [analysis_cooks_distance](code/analysis_cooks_distance.npy)
+- [analysis_cooks_distance](code/analysis_cooks_distance.py)
 This will run a Cook's distance analysis of influential ROIs using [statsmodels](https://www.statsmodels.org/stable/index.html) and [scipy](https://scipy.org). 
 
 ### `data`
@@ -49,7 +49,7 @@ receptor_names_pet.npy contains a list of pet tracers used in this experiment.
 
 Please refer to the [preprint](https://www.biorxiv.org/content/10.1101/2024.03.13.583894v1) and supplementary materials for a full list of references.
 
-- [saved_nulls](data/saved_nulls/) contains the null maps saved from [parcellate_maps_and_generate_nulls](code/parcellate_maps_and_generate_nulls.npy).
+- [saved_nulls](data/saved_nulls/) contains the null maps saved from [parcellate_maps_and_generate_nulls](code/parcellate_maps_and_generate_nulls.py).
 
 ### `figures`
 The [figures](figures/) folder contains figures generated through the above code.
