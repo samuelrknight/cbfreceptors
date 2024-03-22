@@ -31,12 +31,13 @@ The [data](data/) folder contains the data used in the analysis including the pa
 - [asl](data/asl/) contains group-level t-stat maps of rCBF arterial spin labelling case-control comparisions, calculated in [SPM12](https://www.fil.ion.ucl.ac.uk/spm/software/spm12/).
 
 The clinical high risk (CHR-P) data was collected as part of two previous studies:
-https://doi.org/10.1176/appi.ajp.2015.15040485
-https://doi.org/10.1093/schbul/sbx169
+- [Resting Hyperperfusion of the Hippocampus, Midbrain, and Basal Ganglia in People at High Risk for Psychosis](https://doi.org/10.1176/appi.ajp.2015.15040485)
+- [Increased Resting Hippocampal and Basal Ganglia Perfusion in People at Ultra High Risk for Psychosis: Replication in a Second Cohort](https://doi.org/10.1093/schbul/sbx169)
 
 The schizophrenia (SSD) data has been presented at these conferences:
-https://cds.ismrm.org/protected/13MProceedings/PDFfiles/0736.PDF
-https://cds.ismrm.org/protected/15MProceedings/PDFfiles/2368.pdf
+- [CBF DIFFERENCES BETWEEN HEALTHY AND SCHIZOPHRENIC BRAINS – A FBIRN PHASE 3 MULTISITE
+STUDY AT 3T USING CBFBIRN DATABASE AND ANALYSIS PIPELINE](https://cds.ismrm.org/protected/13MProceedings/PDFfiles/0736.PDF)
+- [Diagnosis of Schizophrenia using CBF Measures as a Classification Feature – A FBIRN Phase 3 Multisite ASL Study at 3T](https://cds.ismrm.org/protected/15MProceedings/PDFfiles/2368.pdf)
     
 Additional maps were created for those CHR-P that subsequently developed psychosis (CHR-T) and those two did not (CHR-NT), as well as maps including age, sex, medication as covariates in the analysis.
 Participant information can be found in the Participant info table.
@@ -51,12 +52,12 @@ Please refer to the [preprint](https://www.biorxiv.org/content/10.1101/2024.03.1
 - [saved_nulls](data/saved_nulls/) contains the null maps saved from 1. parcellate_maps_and_generate_nulls.
 
 ### `figures`
-Contains figures generated through the above code.
+The [figures](figures/) folder contains figures generated through the above code.
 
 brain render figures were generated through code in python by first extracting each ROI in MNI space using [nibabel](https://nipy.org/nibabel/) and then converted to a mesh using [nii2mesh](https://github.com/neurolabusc/nii2mesh). Values for each ROI were input from .csv files finally each combined image was rendered in [surfice](https://www.nitrc.org/projects/surfice/).
 
 ### `results`
-contains results generated through the above code.
+The [results](results/) folder contains results generated through the above code.
 
 ## `transcriptomic analysis`
-contains the code and data used for the transcriptomic analysis, implemented using the [imagingtranscriptomics](https://pypi.org/project/imaging-transcriptomics/) package.
+[transcriptomic_analysis](transcriptomic_analysis) contains the code and data used for the transcriptomic analysis, implemented through the [imaging-transcriptomics](https://pypi.org/project/imaging-transcriptomics/) package.
