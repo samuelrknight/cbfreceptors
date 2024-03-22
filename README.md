@@ -49,7 +49,7 @@ receptor_names_pet.npy contains a list of pet tracers used in this experiment.
 
 Please refer to the [preprint](https://www.biorxiv.org/content/10.1101/2024.03.13.583894v1) and supplementary materials for a full list of references.
 
-- [saved_nulls](data/saved_nulls/) contains the null maps saved from 1. parcellate_maps_and_generate_nulls.
+- [saved_nulls](data/saved_nulls/) contains the null maps saved from [parcellate_maps_and_generate_nulls](code/parcellate_maps_and_generate_nulls.npy).
 
 ### `figures`
 The [figures](figures/) folder contains figures generated through the above code.
