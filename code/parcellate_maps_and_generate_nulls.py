@@ -102,21 +102,17 @@ for map_name, map_path in asl_maps:
     parcellated_asl[map_name] = parcellated_map
 
 
-# Create an empty DataFrame with columns as the receptor names
-rdf = pd.DataFrame(columns=parcellated_asl.keys())
+# Create an empty DataFrame with columns as the asl names
+asldf = pd.DataFrame(columns=parcellated_asl.keys())
 
 # Populate the DataFrame with reshaped parcellated maps
 for asl_name, parcellated_map in parcellated_asl.items():
     reshaped_map = parcellated_map.flatten()
-    rdf[asl_name] = reshaped_map
+    asldf[asl_name] = reshaped_map
 
 # Save the DataFrame to a CSV file
 csv_filename = path+'data/asl_parcellated_'+scale+'.csv'
-rdf.to_csv(csv_filename, index=False, header = None)
-
-#load receptor_names
-receptor_names = np.load(path+'data/receptor_names_pet.npy')
-receptor_names = np.delete(receptor_names, (12), axis=0) #remove unused receptor name 12=Ro15
+asldf.to_csv(csv_filename, index=False, header = None)
 
 #Parcellate receptor maps 
 parcellated_receptors = {}
@@ -149,9 +145,9 @@ generate nulls
 
 print("Generating nulls. Please wait!")
 
-Generate nulls with brainsmash burt2020
+# Generate nulls with brainsmash burt2020
 for i, (map_name, _) in enumerate(asl_maps):
-    nulls = neuromaps.nulls.burt2020(globals()[f'{map_name}_{scale}'], atlas=space, density=resolution,
+    nulls = neuromaps.nulls.burt2020(globals()[asldf[{map_name}], atlas=space, density=resolution,
                                      n_perm=5000, seed=1212, parcellation=parcellation_atlas)
     np.save(path+'data/saved_nulls/'+f'{map_name}_{scale}.npy', nulls)
     print(f"Nulls for {map_name} generated and saved.")
