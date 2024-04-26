@@ -147,7 +147,7 @@ print("Generating nulls. Please wait!")
 
 # Generate nulls with brainsmash burt2020
 for i, (map_name, _) in enumerate(asl_maps):
-    nulls = neuromaps.nulls.burt2020(globals()[asldf[{map_name}], atlas=space, density=resolution,
+    nulls = neuromaps.nulls.burt2020(asldf[f'{map_name}'], atlas=space, density=resolution,
                                      n_perm=5000, seed=1212, parcellation=parcellation_atlas)
     np.save(path+'data/saved_nulls/'+f'{map_name}_{scale}.npy', nulls)
     print(f"Nulls for {map_name} generated and saved.")
