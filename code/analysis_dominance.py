@@ -126,7 +126,7 @@ for i in range(len(disorders)):
 
     # get p-value of model
     model_pval[i] = get_reg_r_pval(zscore(receptor_data),
-                                   zscore(asl[:, i]), smash[i], nsmash)
+                                   zscore(asl[:, i]), zscore(smash[i]), nsmash)
                                   # spins, nspins)
 
 model_pval = multipletests(model_pval, method='fdr_bh')[1]
