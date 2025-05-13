@@ -181,6 +181,6 @@ plt.savefig(
     pad_inches=0.0,
     facecolor='white',
     edgecolor='none',
-    dpi=300
+    dpi=600
 )
 plt.show()
