@@ -3,14 +3,13 @@
 ASL Patient vs Control difference map x PET maps Dominance analysis
 """
 
+import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from netneurotools import datasets, stats, utils
-from scipy.stats import zscore, pearsonr
-import seaborn as sns
+from scipy.stats import zscore
 from matplotlib.colors import ListedColormap
-from scipy.spatial.distance import squareform, pdist
 from sklearn.linear_model import LinearRegression
 from statsmodels.stats.multitest import multipletests
 import matplotlib
@@ -59,7 +58,7 @@ set-up
 """
 
 scale = '122'
-path = '/Users/k1801291/local_data/github/cbfreceptors/'
+path = os.path.expanduser("~") + "/local_data/cbfreceptors-main/"
 
 #brainsmash implementation for cort+subcort maps. Ensure nulls match parcellated_asl_scale.
 nsmash = 5000
@@ -138,19 +137,50 @@ for i in range(len(model_metrics)):
     dominance[i, :] = tmp["total_dominance"]
 np.save(path+'results/dominance/scale_'+scale+'/dominance.npy', dominance)
 
+# Bar plot of model importance
 plt.ion()
-plt.figure()
-plt.barh(np.arange(len(disorders)), np.sum(dominance, axis=1),
-        tick_label=disorders, color="#FF7557")
+plt.figure(figsize=(8, 4))
+plt.barh(np.arange(len(disorders)), np.sum(dominance, axis=1), tick_label=disorders, color="#FF7557")
 plt.xticks(rotation='horizontal')
 plt.tight_layout()
-plt.savefig(path+'figures/scale_'+scale+'/bar_dominance.svg')
+plt.savefig(path + f'figures/scale_{scale}/bar_dominance.svg')
 
+# Heatmap of dominance (normalized)
 dominance[np.where(model_pval >= 0.05)[0], :] = 0
-plt.ion()
-plt.figure()
-sns.heatmap(dominance / np.sum(dominance, axis=1)[:, None],
-            xticklabels=receptor_names, yticklabels=disorders,
-            cmap=sexyRdBu, linewidth=.5)
+dominance_norm = dominance / np.sum(dominance, axis=1)[:, None]
+
+fig, ax = plt.subplots(figsize=(12, 6))
+im = ax.imshow(dominance_norm, cmap=sexyRdBu, vmin=0, vmax=dominance_norm.max(), aspect='auto', interpolation='none')
+
+# Axis ticks
+ax.set_xticks(np.arange(len(receptor_names)))
+ax.set_yticks(np.arange(len(disorders)))
+ax.set_xticklabels(receptor_names, rotation=45, ha="right")
+ax.set_yticklabels(disorders)
+
+# Remove spines and ticks
+for edge in ["top", "bottom", "left", "right"]:
+    ax.spines[edge].set_visible(False)
+ax.tick_params(top=False, bottom=False, left=False, right=False)
+
+# Colorbar
+cbar = ax.figure.colorbar(im, ax=ax)
+cbar.outline.set_visible(False)
+cbar.ax.set_ylabel("Normalized Dominance", rotation=-90, va="bottom")
+cbar.ax.tick_params(size=0)
+
+plt.title("Dominance Analysis Heatmap")
 plt.tight_layout()
-plt.savefig(path+'figures/scale'+scale+'/heatmap_dominance.svg')
+
+# Save figure cleanly
+output_path = path + f'figures/scale{scale}/heatmap_dominance.svg'
+os.makedirs(os.path.dirname(output_path), exist_ok=True)
+plt.savefig(
+    output_path,
+    bbox_inches='tight',
+    pad_inches=0.0,
+    facecolor='white',
+    edgecolor='none',
+    dpi=300
+)
+plt.show()
